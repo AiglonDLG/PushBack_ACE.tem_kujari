@@ -1,0 +1,1 @@
+[] execVM "scripts\menus\main.sqf";

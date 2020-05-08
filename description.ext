@@ -1,0 +1,54 @@
+Author = "Team B.w.S";
+OnLoadName = "PushBack";
+OnLoadMission = "Rétablir la paix";
+loadScreen =  "images\load.jpg";
+
+Respawn = "BASE";
+RespawnDelay = 10;
+respawnVehicleDelay = 60;
+
+disabledAI = 1;
+enableDebugConsole = 1;
+disableChannels[]={1,2,3,4};
+
+corpseManagerMode = 1;
+wreckManagerMode = 1;
+
+corpseLimit = 3; 
+corpseRemovalMinTime = 300;
+corpseRemovalMaxTime = 600;
+
+wreckLimit = 3;
+wreckRemovalMinTime = 300;
+wreckRemovalMaxTime = 600;
+
+class Header {
+	gameType = Coop;
+	minPlayers = 1;
+	maxPlayers = 39; 
+	playerCountMultipleOf = 1;
+};
+
+#include "R3F_LOG\desc_include.h"
+
+class CfgUnitInsignia
+{
+	class OperationPushBack
+	{
+		displayName = "Operation Push Back"; // Name displayed in Arsenal
+		author = "B.w.S"; // Author displayed in Arsenal
+		texture = "images\OPPushBack.pac"; // Image path
+		textureVehicle = ""; // Does nothing currently, reserved for future use
+	};
+};
+
+class CfgMusic
+{
+	tracks[]={};
+
+	class FiveFingerIntro
+	{
+		name = "";
+		sound[] = {"5fdp.ogg", db+0, 1.0};
+	};
+};
