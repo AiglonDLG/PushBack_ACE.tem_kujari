@@ -35,7 +35,7 @@ BwS_fn_creer_patrouille =
 	_posY = _centre select 1;
 	if (({(_x distance _centre) <= 1000} count allPlayers) == 0) then 
 	{
-		if (random 100 < 25) then
+		if (random 100 < 75) then
 		{
 
 			_g = [[_posX, _posY], 3+round(random(4)), BwS_var_side_ennemie, BwS_var_side_ennemie, "CAN_COLLIDE"] call BwS_fn_spawnGroup;
