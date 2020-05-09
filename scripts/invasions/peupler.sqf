@@ -163,6 +163,7 @@ while {true} do
 		}; 
 	};
 	
+	// s'il n'y a pas de joueurs chez les IA
 	if ((count (allPlayers select {side _x == BwS_var_side_ennemie})) == 0) then
 	{
 		// pour chaque patrouille
@@ -185,31 +186,39 @@ while {true} do
 			};
 		} forEach _allPatrols;
 		
+		// si des joueurs sont présents
 		if (count allPlayers > 0) then
 		{		
+			// on détermine les pax qui sont en Troop In Contact
 			BwS_var_TIC = allUnits select {
 				(side _x == BwS_var_side_ennemie) &&
 				(((behaviour _x) isEqualTo "COMBAT") || (_x getVariable ["BwS_var_is_TIC", false]))
 			};
 
+			// s'il y en a
 			if (count BwS_var_TIC > 0) then
 			{
-				// appel de renforts
+				// appel de renforts parmi les patrouilles dédiées
 				{
 					_x move position selectRandom(BwS_var_TIC);
 					[_x, (currentWaypoint _x)] setWaypointType "SAD";
 					_x setSpeedMode "FULL";
 				} forEach BwS_var_pat_attaquants;
 
+				// pour chaque soldat en TIC
 				{
 					_soldat = _x;
+					// si sa variable TIC n'est pas bonne on la met à jour
 					if !(_soldat getVariable ["BwS_var_is_TIC", false]) then 
 					{
 						_soldat setVariable ["BwS_var_is_TIC", true];
 						_soldat setVariable ["BwS_var_debut_TIC", serverTime];
 					}
+					// sinon s'il est en TIC, on regarde depuis quand
 					else 
-					{
+					{	
+						// si il est en TIC depuis plus d'un certain temps, il repasse en stade normal 
+						// ça évite de se retrouver avec toutes les IA de la carte à un endroit 
 						if ((serverTime - (_soldat getVariable ["BwS_var_debut_TIC", 0])) > 300) then
 						{
 							(group _soldat) setBehaviour "AWARE";
@@ -217,7 +226,9 @@ while {true} do
 						};
 					};
 				} forEach BwS_var_TIC;
-			} else 
+			} 
+			// sinon, si personne au contact, on fait patrouiller les patrouilles dédiées à la QRF
+			else 
 			{
 				// random pat
 				{
@@ -230,6 +241,7 @@ while {true} do
 		};
 	};
 	
+	// un peu de reward quand même pour renflouer les caisses
 	[usine_us, 50] call BwS_fn_add_credit;
 	[conteneur, 5] call BwS_fn_add_credit;
 	[conteneur2, 5] call BwS_fn_add_credit;
@@ -237,7 +249,8 @@ while {true} do
 	sleep 30;
 };
 //deleteMarker _zone_op;
-
+/*
 BwS_IEDs = (([0,0] nearObjects BwS_IED_cfg_radius) select {_x getVariable ["BwS_IED_est_un_IED", false]});
 sleep 10;
 publicVariable "BwS_IEDs";
+*/

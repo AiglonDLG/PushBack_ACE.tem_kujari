@@ -1,10 +1,10 @@
 BwS_IED_fn_robot_ouvreur =
 {
 	_drone = _this select 0;
+	_distance = 10;
 
 	while {alive _drone} do
 	{
-		_distance = 10;
 		_IEDs = ((_drone nearObjects _distance) select {_x getVariable ["BwS_IED_est_un_IED", false]});
 		
 		if (count _IEDs > 0) then // s'il y a des IED à - de _distance m
@@ -194,11 +194,10 @@ BwS_IED_fn_Explose_IED =
 	
 	_pos set [2, 0];
 	_type createVehicle _pos;	
-	
+
 	[[_pos], "IED_SCREEN_EFFECTS", true, false] spawn BIS_fnc_MP;
 	[[_pos], _smoke, true, false] spawn BIS_fnc_MP;
 	[[_pos], "SHOCK_WAVE", true, false] spawn BIS_fnc_MP;
-
 	
 	if (_controleur != objNull) then {_type createVehicle position _controleur};
 	[] spawn BwS_IED_fn_creer_IED; // quand un IED exlose, on en créé un nouveau
