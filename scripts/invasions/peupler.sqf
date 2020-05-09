@@ -30,6 +30,7 @@ BwS_fn_random_pos =
 
 BwS_fn_creer_patrouille = 
 {
+	waitUntil {count BwS_var_casernes > 0; sleep 0.01;};
 	_centre = position (selectRandom BwS_var_casernes);
 	_posX = _centre select 0;
 	_posY = _centre select 1;

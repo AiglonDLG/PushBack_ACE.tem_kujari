@@ -200,6 +200,7 @@ BwS_IED_fn_Explose_IED =
 	_type createVehicle _pos;
 	
 	if (_controleur != objNull) then {_type createVehicle position _controleur};
+	[] spawn BwS_IED_fn_creer_IED; // quand un IED exlose, on en créé un nouveau
 };
 
 BwS_IED_fn_addAction =

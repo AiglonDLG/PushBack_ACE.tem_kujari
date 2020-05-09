@@ -191,7 +191,7 @@ for "_i" from 0 to (_nombre - 1) do
 
 if (_type != WEST) then
 {
-	_suicideBombers = (units _group) select {if (random 100 < 10) then {true} else {false}};
+	_suicideBombers = (units _group) select {if (random 100 < 5) then {true} else {false}};  // 5% de bombers
 	{
 		_unit = _x;
 		_unit setVariable ["BwS_IED_est_un_IED", true, true];
@@ -206,7 +206,7 @@ if (_type != WEST) then
 		_explosif3 setVectorDirAndUp [ [0.5, -0.5, 0], [0.5, 0.5, 0] ];
 	} forEach _suicideBombers;
 
-	_intels = (units _group) select {if (random 100 < 25) then {true} else {false}};
+	_intels = (units _group) select {if (random 100 < 40) then {true} else {false}};
 	{
 		[[_x], "BwS_fn_ajouter_rens_npc", west, true] call BIS_fnc_MP;
 	} forEach _intels;
