@@ -192,12 +192,13 @@ BwS_IED_fn_Explose_IED =
 		_smoke = "IED_SMOKE_SMALL";
 	};
 	
+	_pos set [2, 0];
+	_type createVehicle _pos;	
+	
 	[[_pos], "IED_SCREEN_EFFECTS", true, false] spawn BIS_fnc_MP;
 	[[_pos], _smoke, true, false] spawn BIS_fnc_MP;
 	[[_pos], "SHOCK_WAVE", true, false] spawn BIS_fnc_MP;
-	
-	_pos set [2, 0];
-	_type createVehicle _pos;
+
 	
 	if (_controleur != objNull) then {_type createVehicle position _controleur};
 	[] spawn BwS_IED_fn_creer_IED; // quand un IED exlose, on en créé un nouveau
