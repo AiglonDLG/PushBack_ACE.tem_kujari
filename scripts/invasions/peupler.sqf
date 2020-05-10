@@ -44,7 +44,7 @@ BwS_fn_creer_patrouille =
 		}
 		else
 		{
-			[[_posX, _posY, 0], _centre] spawn BwS_fn_pickups;
+			[position (selectRandom (_centre nearRoads 100))] spawn BwS_fn_pickups;
 		};
 	};
 };
