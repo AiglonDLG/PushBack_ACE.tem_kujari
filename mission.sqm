@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=2710;
+		nextID=2712;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1529;
+		nextID=1541;
 	};
 	class Camera
 	{
-		pos[]={11913.577,28.057564,15106.148};
-		dir[]={0.98791379,-0.15423688,0.022006989};
-		up[]={0.15431933,0.98799801,0.0034416488};
-		aside[]={0.022279534,-1.5322439e-007,-0.99988276};
+		pos[]={11974.487,35.078083,15116.97};
+		dir[]={-0.77594966,-0.34705684,0.5268091};
+		up[]={-0.28714254,0.93783802,0.19494793};
+		aside[]={0.56171674,-4.3350155e-007,0.82736921};
 	};
 };
 binarizationWanted=0;
@@ -72,7 +72,8 @@ addons[]=
 	"A3_Structures_F_Items_Electronics",
 	"A3_Structures_F_Civ_Camping",
 	"A3_Characters_F_Exp",
-	"R3F_PVP"
+	"R3F_PVP",
+	"A3_Structures_F_Civ_Lamps"
 };
 class AddonsMetaData
 {
@@ -9074,7 +9075,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=70;
+		items=72;
 		class Item0
 		{
 			dataType="Logic";
@@ -16559,6 +16560,38 @@ class Mission
 			};
 			id=2709;
 			type="R3F_PVP_DA_WASP_COMMANDEMENT";
+		};
+		class Item70
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={11950.307,33.179054,15109.206};
+				angles[]={0,4.7145996,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=2710;
+			type="Land_LampAirport_F";
+			atlOffset=1.9073486e-006;
+		};
+		class Item71
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={11973.325,35.01757,15124.685};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=2711;
+			type="Land_PortableLight_02_single_sand_F";
 		};
 	};
 };
